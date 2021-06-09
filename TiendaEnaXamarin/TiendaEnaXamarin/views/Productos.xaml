@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaEnaXamarin.views.Productos">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White" Padding="20,10,20,50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <SearchBar x:Name="TxtBuscar" Placeholder="Buscar" Grid.Row="0" TextChanged="buscarProducto" />
+            <Label Text="Productos" Grid.Column="0" Grid.Row="1" TextColor="Black" FontSize="25" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+            <StackLayout Orientation="Horizontal" Grid.Row="2" HorizontalOptions="Center">
+                <Button Text="Refresh" Clicked="refresh" BackgroundColor="#03162F" TextColor="White"/>
+                <Button Text="Promociones" Clicked="toPromociones" BackgroundColor="#03162F" TextColor="White"/>
+                <Button Text="Compras" Clicked="toCompras" BackgroundColor="#03162F" TextColor="White"/>
+            </StackLayout>
+            <ScrollView Grid.Column="0" Grid.Row="3" BackgroundColor="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ListView x:Name="ProductosList" ItemsSource="{Binding ProductosList}" SeparatorVisibility="None" HasUnevenRows="True" ItemSelected="ProductosList_ItemSelected" >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame  Padding="0" BorderColor="DarkSlateGray">
+                                                <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="0.5*"/>
+                                                        <ColumnDefinition Width="2*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="2*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                                    <Label Margin="10,0,10,0" Text="{Binding id}" VerticalOptions="Center"  Grid.Column="0" TextColor="Black" />
+                                                    <Label Margin="10,0,10,0" Text="{Binding nombre}" VerticalOptions="Center"  Grid.Column="1" TextColor="Black" />
+                                                    <Label Margin="10,0,10,0" Text="{Binding precio}" VerticalOptions="Center"  Grid.Column="2" TextColor="Black" />
+                                                    <Label Margin="10,0,10,0" Text="{Binding stock}" VerticalOptions="Center"  Grid.Column="3" TextColor="Black" />
+                                                    <Image Margin="10,0,10,0" Source="{Binding imagen}" VerticalOptions="Center"  Grid.Column="4" />
+                                                  
+                                                </Grid>
+
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                </Grid>
+            </ScrollView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
